@@ -4,8 +4,9 @@
 
 function openSidebar() {
     const sidebar = document.getElementById("sidebar");
+
     if (sidebar) {
-        sidebar.classList.add("active");
+        sidebar.classList.add("open");
     } else {
         console.error("Sidebar element not found");
     }
@@ -13,15 +14,16 @@ function openSidebar() {
 
 function closeSidebar() {
     const sidebar = document.getElementById("sidebar");
+
     if (sidebar) {
-        sidebar.classList.remove("active");
+        sidebar.classList.remove("open");
     } else {
         console.error("Sidebar element not found");
     }
 }
 
 // ==========================
-// Optional: close sidebar when clicking outside
+// Close sidebar when clicking outside
 // ==========================
 
 document.addEventListener("click", function (event) {
@@ -34,6 +36,6 @@ document.addEventListener("click", function (event) {
     const isButton = button.contains(event.target);
 
     if (!isClickInsideSidebar && !isButton) {
-        sidebar.classList.remove("active");
+        sidebar.classList.remove("open"); // FIXED HERE
     }
 });

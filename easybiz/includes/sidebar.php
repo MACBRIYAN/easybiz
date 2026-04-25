@@ -63,6 +63,9 @@
     <a href="upgrade.php" class="<?php echo $current === 'upgrade.php' ? 'active' : ''; ?>">
       <i class="bi bi-star"></i> Upgrade
     </a>
+    <a href="Reviews.php" class="<?php echo $current === 'Reviews.php' ? 'active' : ''; ?>">
+      <i class="bi bi-pencil-square"></i> Reviews
+    </a>
 
     <!-- Divider line -->
     <hr style="border-color:rgba(255,255,255,0.1); margin:10px 20px;">

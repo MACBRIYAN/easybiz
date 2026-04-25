@@ -257,6 +257,6 @@ if (is_premium($user) && !empty($user['sub_end'])) {
 </div><!-- end main-content -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script> <!-- our custom JS file -->
+<script src="/easybiz/js/app.js"></script> <!-- our custom JS file -->
 </body>
 </html>
