@@ -1,0 +1,517 @@
+/* ============================================================
+   css/style.css
+   EasyBiz - Main Stylesheet
+   Uses Bootstrap 5 as base + custom overrides here
+   ============================================================ */
+
+/* --- Import Google Font: Poppins (modern, clean, readable) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Root CSS Variables: change colors here to retheme the whole app --- */
+:root {
+  --primary:     #1a73e8;   /* main brand blue (buttons, links, highlights) */
+  --primary-dark:#1558b0;   /* darker blue for hover states */
+  --accent:      #fbbc04;   /* yellow accent for warnings and highlights */
+  --success:     #34a853;   /* green for paid/success states */
+  --danger:      #ea4335;   /* red for errors and pending warnings */
+  --dark:        #1e1e2d;   /* dark background (sidebar, navbar) */
+  --dark-2:      #2d2d44;   /* slightly lighter dark (sidebar hover) */
+  --text:        #3c4043;   /* main body text color */
+  --muted:       #80868b;   /* grey for secondary labels */
+  --border:      #e8eaed;   /* light grey for borders */
+  --bg:          #f8f9fa;   /* page background */
+  --card-bg:     #ffffff;   /* white card backgrounds */
+  --sidebar-w:   250px;     /* sidebar width — change here to resize sidebar */
+}
+
+/* --- Base Reset & Font Setup --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* include padding in width calculations */
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* apply custom font to everything */
+  background-color: var(--bg);        /* light grey page background */
+  color: var(--text);                 /* default text color */
+  font-size: 14px;                    /* base font size */
+}
+
+/* ============================================================
+   LANDING PAGE STYLES
+   ============================================================ */
+
+/* Hero section — the big intro banner on the landing page */
+.hero-section {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  /* gradient from dark blue to brand blue, angled at 135 degrees */
+  min-height: 100vh;     /* take full screen height */
+  display: flex;
+  align-items: center;   /* center content vertically */
+  color: white;
+  padding: 60px 0;
+}
+
+/* Big heading text on hero */
+.hero-section h1 {
+  font-size: 3rem;        /* large and bold */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Subtitle under the hero heading */
+.hero-section .lead {
+  font-size: 1.2rem;
+  opacity: 0.9;           /* slightly transparent for visual hierarchy */
+  margin-bottom: 30px;
+}
+
+/* Feature cards on the landing page */
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 12px;              /* rounded corners */
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08); /* soft shadow */
+  transition: transform 0.2s ease;  /* smooth hover lift effect */
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* lift card up slightly on hover */
+}
+
+/* Icon inside feature card */
+.feature-card .icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+/* Pricing card */
+.pricing-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.pricing-card .price {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* ============================================================
+   AUTHENTICATION PAGES (Login, Register, Forgot Password)
+   ============================================================ */
+
+/* Centered auth card wrapper */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  padding: 20px;
+}
+
+/* White card that holds the login/register form */
+.auth-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;     /* limit width on large screens */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3); /* strong shadow for depth */
+}
+
+/* App logo text at top of auth cards */
+.auth-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-logo h2 {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* ============================================================
+   DASHBOARD LAYOUT (Sidebar + Main Content)
+   ============================================================ */
+
+/* Sidebar — fixed vertical navigation on the left */
+.sidebar {
+  position: fixed;          /* stays in place when scrolling */
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);  /* uses CSS variable for easy resize */
+  height: 100vh;            /* full screen height */
+  background: var(--dark);  /* dark background */
+  z-index: 1000;            /* on top of everything */
+  overflow-y: auto;         /* scroll if content overflows */
+  transition: left 0.3s ease; /* smooth slide animation (mobile) */
+}
+
+/* Logo area at top of sidebar */
+.sidebar-logo {
+  padding: 25px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* subtle divider */
+}
+
+.sidebar-logo h4 {
+  color: white;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sidebar-logo span {
+  color: var(--accent); /* yellow accent on logo */
+}
+
+/* Navigation links in sidebar */
+.sidebar-nav {
+  padding: 15px 0;
+}
+
+/* Each nav link item */
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;                /* space between icon and label */
+  padding: 12px 20px;
+  color: rgba(255,255,255,0.7); /* slightly transparent white */
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent; /* invisible left border (shows on active) */
+}
+
+/* Hover and active states for nav links */
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  color: white;
+  background: var(--dark-2);
+  border-left-color: var(--primary); /* blue left border highlights active page */
+}
+
+.sidebar-nav a i {
+  width: 20px;          /* fixed icon width for alignment */
+  text-align: center;
+}
+
+/* Main content area — pushed right to make room for sidebar */
+.main-content {
+  margin-left: var(--sidebar-w); /* same as sidebar width */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top navbar inside dashboard */
+.top-navbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;        /* sticks to top when scrolling */
+  top: 0;
+  z-index: 999;
+}
+
+/* Page content padding wrapper */
+.page-content {
+  padding: 25px;
+  flex: 1; /* fill remaining height */
+}
+
+/* ============================================================
+   STAT CARDS (Dashboard summary boxes)
+   ============================================================ */
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px); /* subtle hover lift */
+}
+
+/* Colored icon circle in stat card */
+.stat-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0; /* prevent icon from shrinking */
+}
+
+/* Color variations for stat card icons */
+.stat-icon.blue   { background: rgba(26,115,232,0.1); color: var(--primary); }
+.stat-icon.green  { background: rgba(52,168,83,0.1);  color: var(--success); }
+.stat-icon.yellow { background: rgba(251,188,4,0.1);  color: #f59e0b; }
+.stat-icon.red    { background: rgba(234,67,53,0.1);  color: var(--danger); }
+
+.stat-info h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-info p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   GENERAL CARD COMPONENT
+   ============================================================ */
+.card {
+  border: none;                  /* remove Bootstrap's default border */
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.card-header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 15px 20px;
+  border-radius: 12px 12px 0 0 !important; /* only round top corners */
+  font-weight: 600;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.table th {
+  font-weight: 600;
+  color: var(--muted);      /* grey header text */
+  font-size: 0.75rem;
+  text-transform: uppercase; /* CAPS column headers */
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border);
+}
+
+.table td {
+  vertical-align: middle; /* center text vertically in cells */
+  padding: 12px 15px;
+}
+
+/* Alternating row colors for readability */
+.table-hover tbody tr:hover {
+  background-color: rgba(26,115,232,0.04);
+}
+
+/* ============================================================
+   BADGES (Status indicators)
+   ============================================================ */
+.badge-paid {
+  background: rgba(52,168,83,0.1);
+  color: var(--success);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-pending {
+  background: rgba(251,188,4,0.1);
+  color: #d97706;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUBSCRIPTION BANNER
+   ============================================================ */
+.sub-banner {
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Green banner for active premium subscription */
+.sub-banner.premium {
+  background: rgba(52,168,83,0.1);
+  border: 1px solid rgba(52,168,83,0.3);
+  color: #166534;
+}
+
+/* Yellow banner when subscription expires in 3 days */
+.sub-banner.expiring {
+  background: rgba(251,188,4,0.1);
+  border: 1px solid rgba(251,188,4,0.3);
+  color: #92400e;
+}
+
+/* Red banner for free/expired plan */
+.sub-banner.free {
+  background: rgba(234,67,53,0.1);
+  border: 1px solid rgba(234,67,53,0.3);
+  color: #991b1b;
+}
+
+/* ============================================================
+   MESSAGE GENERATOR BOX
+   ============================================================ */
+.message-box {
+  background: var(--dark);     /* dark background like a chat window */
+  color: #e8eaed;              /* light text */
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'Courier New', monospace; /* monospace for message feel */
+  font-size: 0.9rem;
+  line-height: 1.8;
+  white-space: pre-wrap;       /* preserve line breaks */
+  min-height: 200px;
+}
+
+/* Copy button below message box */
+.btn-copy {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-copy:hover {
+  background: var(--primary-dark);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+/* Primary action button */
+.btn-primary {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-control, .form-select {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,115,232,0.15); /* blue glow on focus */
+  outline: none;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   ALERT MESSAGES (Flash feedback)
+   ============================================================ */
+.alert {
+  border-radius: 10px;
+  border: none;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE (screens smaller than 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Hide sidebar off-screen on mobile */
+  .sidebar {
+    left: calc(-1 * var(--sidebar-w)); /* slide off screen to the left */
+  }
+
+  /* When JS adds .open class, slide sidebar in */
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* Full width content on mobile (no sidebar offset) */
+  .main-content {
+    margin-left: 0;
+  }
+
+  /* Smaller hero text on mobile */
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  /* Stack stat cards vertically on small screens */
+  .stat-card {
+    margin-bottom: 15px;
+  }
+}
+
+/* ============================================================
+   OVERLAY (dark background when sidebar is open on mobile)
+   ============================================================ */
+.sidebar-overlay {
+  display: none;            /* hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* semi-transparent black */
+  z-index: 999;             /* just below sidebar (1000) */
+}
+
+.sidebar-overlay.show {
+  display: block; /* shown by JS when sidebar is open on mobile */
+}
+
+/* ============================================================
+   ADMIN SPECIFIC STYLES
+   ============================================================ */
+
+/* Admin sidebar is slightly different shade */
+.admin-sidebar {
+  background: #1a1a2e; /* very dark navy for admin */
+}
+
+/* Admin top bar */
+.admin-topbar {
+  background: white;
+  border-bottom: 3px solid var(--primary); /* blue accent line at bottom */
+}
